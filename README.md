@@ -1,6 +1,6 @@
-# iceaac
+# SlimAAC Client
 
-> IceAAC for TFS
+> SlimAAC Client for TFS using Vue 2.x
 
 ## Build Setup
 
