@@ -1,3 +1,14 @@
+import Vue from 'vue'
+import VueResource from 'vue-resource'
+
+const {SCHEME, HOSTNAME} =
+	process.env.NODE_ENV == 'production'
+	? {SCHEME: 'https', HOSTNAME: window.location.hostname}
+	: {SCHEME: 'http' , HOSTNAME: 'localhost:8000'}
+
+Vue.use(VueResource)
+Vue.http.options.root = `${SCHEME}://${HOSTNAME}/api/v1`;
+
 export default {
 	context: null,
 	method: null,

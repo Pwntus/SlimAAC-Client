@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Api from '../../api/Api'
+import Api from '../../api'
 
 export default {
 	data () {
@@ -31,13 +31,6 @@ export default {
 		fetch () {
 			this.error = this.posts = null;
 			this.$store.dispatch('setPageLoading', true)
-			/*this.$http.get('http://localhost:8000/api/v1/news')
-				.then(response => {
-					this.$store.dispatch('setPageLoading', false)
-					this.posts = response.body	
-				}, (response) => {
-					this.loading = false
-				})*/
 				
 			Api.action(this, 'get', 'news')
 			Api.commit(response => {

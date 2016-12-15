@@ -5,7 +5,7 @@
 			
 			<form @submit.prevent="submit">
 				<div class="errorMessage">
-					{{ error.name }}
+					{{ errors.name }}
 				</div>
 				<div class="group">
 					<ui-textbox
@@ -21,7 +21,7 @@
 					></ui-textbox>
 				</div>
 				<div class="errorMessage">
-					{{ error.email }}
+					{{ errors.email }}
 				</div>
 				<div class="group">
 					<ui-textbox
@@ -35,7 +35,7 @@
 					></ui-textbox>
 				</div>
 				<div class="errorMessage">
-					{{ error.password }}
+					{{ errors.password }}
 				</div>
 				<div class="group">
 					<ui-textbox
@@ -60,7 +60,7 @@
 					></ui-textbox>
 				</div>
 				<div class="errorMessage">
-					{{ error.confirm }}
+					{{ errors.confirm }}
 				</div>
 				<div class="group">
 					<ui-checkbox
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import Api from '../../../api/Api'
+import Api from '../../../api'
 
 export default {
 	data () {
@@ -101,11 +101,11 @@ export default {
 				password2: '',
 				confirm: false
 			},
-			error: {
-				name: '',
-				email: '',
-				password: '',
-				confirm: ''
+			errors: {
+				name : '',
+				email : '',
+				password : '',
+				confirm : '',
 			},
 			loading: false,
 			registered: false
@@ -127,29 +127,26 @@ export default {
 	},
 	methods: {
 		submit () {
-			this.error.name = ''
-			this.error.email = ''
-			this.error.password = ''
-			this.error.confirm = ''
+			this.errors = {}
 			
 			if (!/^[a-zA-Z0-9]{2,12}$/.test(this.form.name)) {
-				this.error.name = 'Account name must have 2-12 characters.'
+				this.errors.name = 'Account name must have 2-12 characters.'
 				return
 			}
 			if (!/\S+@\S+\.\S+/.test(this.form.email)) {
-				this.error.name = 'Please enter a valid email.'
+				this.errors.email = 'Please enter a valid email.'
 				return
 			}
 			if (!/^(.{2,20}|.{40})$/.test(this.form.password)) {
-				this.error.password = 'Password must have 2-20 characters'
+				this.errors.password = 'Password must have 2-20 characters'
 				return
 			}
 			if (this.form.password !== this.form.password2) {
-				this.error.password = 'Passwords didn\'t match.'
+				this.errors.password = 'Passwords didn\'t match.'
 				return
 			}
 			if (!this.form.confirm) {
-				this.error.confirm = 'Please confirm that you have read the rules.'
+				this.errors.confirm = 'Please confirm that you have read the rules.'
 				return
 			}
 			
@@ -159,7 +156,7 @@ export default {
 				this.loading = false
 				
 				if (response.status !== 200) {
-					this.error.name = response.body.message
+					this.errors.name = response.body.message
 					return
 				}
 				
