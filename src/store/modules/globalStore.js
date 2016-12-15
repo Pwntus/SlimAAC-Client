@@ -10,13 +10,19 @@ const mutations = {
 
 const actions = {
 	setPageLoading ({commit}, value) {
-		commit('SET_PAGE_LOADING', value);
+		commit('SET_PAGE_LOADING', value)
 	}
 }
 
+const getters = {
+	isPageLoading: state => {
+		return state.pageLoading
+	}
+}
 
 export default {
 	state,
 	mutations,
-	actions
+	actions,
+	getters
 }

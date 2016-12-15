@@ -3,9 +3,12 @@
 		<router-link to="/" class="logo"></router-link>
 		<ul>
 			<li><router-link to="/news"><ui-icon icon="format_align_left"></ui-icon>News</router-link></li>
-			<li><router-link to="/account/register"><ui-icon icon="person_add"></ui-icon>Create Account</router-link></li>
+			<li v-if="authLevel == 0"><router-link to="/account/register"><ui-icon icon="person_add"></ui-icon>Create Account</router-link></li>
 			<li><router-link to="/downloads"><ui-icon icon="play_for_work"></ui-icon>Downloads</router-link></li>
 			
+			<li v-if="authLevel == 0"><router-link to="/account/login"><ui-icon icon="exit_to_app"></ui-icon>Login</router-link></li>
+			<li v-if="authLevel > 0"><router-link to="/account/logout"><ui-icon icon="exit_to_app"></ui-icon>Logout</router-link></li>
+					
 			<li class="header"><p>Community</p></li>
 			<li><a href="#"><ui-icon icon="timeline"></ui-icon>Online List</a></li>
 			<li><a href="#"><ui-icon icon="public"></ui-icon>Activity</a></li>
@@ -23,12 +26,12 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapGetters} from 'vuex'
 
 export default {
-	computed: mapState({
-		userStore: state => state.userStore
-	})
+	computed: mapGetters([
+		'authLevel'
+	])
 }
 </script>
 

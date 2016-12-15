@@ -9,13 +9,12 @@
 				</div>
 				<div class="group">
 					<ui-textbox
-						id="register-name"
 						v-model="form.name"
 						type="text"
 						name="name"
 						:valid="false"
 						validate-on-blur
-						validationRules="required|min:6"
+						validationRules="required"
 						placeholder="Account name"
 						icon="account_circle"
 					></ui-textbox>
@@ -102,10 +101,10 @@ export default {
 				confirm: false
 			},
 			errors: {
-				name : '',
-				email : '',
-				password : '',
-				confirm : '',
+				name: '',
+				email: '',
+				password: '',
+				confirm: '',
 			},
 			loading: false,
 			registered: false
