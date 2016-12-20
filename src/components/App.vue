@@ -1,16 +1,8 @@
 <template>
 	<div id="app">
-		<sidenav></sidenav>
 		<topbar></topbar>
-		<ui-progress-linear
-			:show="isPageLoading"
-		></ui-progress-linear>
+		<sidenav></sidenav>
 		<router-view></router-view>
-		<ui-snackbar
-			:show="st"
-			message="FOOBAR"
-			:autoHide="true"
-		></ui-snackbar>
 	</div>
 </template>
 
@@ -20,14 +12,10 @@ import Sidenav from './Sidenav'
 import Topbar from './Topbar'
 
 export default {
+	name: 'App',
 	components: {
 		Sidenav,
 		Topbar
-	},
-	data () {
-		return {
-			st: true
-		}
 	},
 	computed: mapGetters([
 		'authLevel',
@@ -41,7 +29,8 @@ export default {
 		// Need fixin
 		next()
 	},
-	created () {
+	mounted () {
+		this.$vuetify.init()
 		const authUser = JSON.parse(window.localStorage.getItem('authUser'))
 		if (authUser !== null)
 			this.$store.dispatch('setAuthUser', authUser)
@@ -49,6 +38,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

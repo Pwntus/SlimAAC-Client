@@ -1,24 +1,21 @@
 * {
 	margin: 0;
 	padding: 0;
-	font-family: Roboto;
-	font-weight: 300;
 } *:focus {
 	outline: none;	
 } body {
-	margin-left: 250px;
 	background: #4f4f4f;
 	overflow: hidden;
 } a {
 	text-decoration: none;
-} .card {
-	margin: 20px;
-	padding: 20px;
-	background: #FFF;
-	box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-} .card h1 {
-	margin-bottom: 20px;
-	color: #2a8fbd;
-} .card article {
-	color: #666;
+} article {
+	margin-left: 50px;
+	padding: 80px 20px 0px;
+	transition: all .3s cubic-bezier(0,0,.2,1);
+}
+
+@media only screen and (min-width: 768px) {
+	article {
+		margin-left: 250px;
+	}
 }

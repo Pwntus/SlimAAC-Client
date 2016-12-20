@@ -1,81 +1,56 @@
 <template>
-	<div class="content">
-		<div class="card" v-if="!registered">
-			<h1>Register Account</h1>
-			
-			<form @submit.prevent="submit">
+	<article>
+		<v-card v-if="!registered">
+			<v-card-row class="light-blue darken-2 white--text">
+				<v-card-title>
+					Register Account
+				</v-card-title>
+			</v-card-row>
+			<v-card-text>
 				<div class="errorMessage">
 					{{ errors.name }}
 				</div>
-				<div class="group">
-					<ui-textbox
-						v-model="form.name"
-						type="text"
-						name="name"
-						:valid="false"
-						validate-on-blur
-						validationRules="required"
-						placeholder="Account name"
-						icon="account_circle"
-					></ui-textbox>
-				</div>
+				<v-text-input
+					v-model="form.name"
+					label="Account name"
+				></v-text-input>
 				<div class="errorMessage">
 					{{ errors.email }}
 				</div>
-				<div class="group">
-					<ui-textbox
-						v-model="form.email"
-						type="email"
-						name="email"
-						validate-on-blur
-						validationRules="required|email"
-						placeholder="Email address"
-						icon="email"
-					></ui-textbox>
-				</div>
+				<v-text-input
+					v-model="form.email"
+					label="Email address"
+					type="email"
+				></v-text-input>
 				<div class="errorMessage">
 					{{ errors.password }}
 				</div>
-				<div class="group">
-					<ui-textbox
-						v-model="form.password"
-						type="password"
-						name="password"
-						validate-on-blur
-						validationRules="required"
-						placeholder="Password"
-						icon="vpn_key"
-					></ui-textbox>
-				</div>
-				<div class="group">
-					<ui-textbox
-						v-model="form.password2"
-						type="password"
-						name="password2"
-						validate-on-blur
-						validationRules="required"
-						placeholder="Password again"
-						icon="vpn_key"
-					></ui-textbox>
-				</div>
+				<v-text-input
+					v-model="form.password"
+					label="Password"
+					type="password"
+				></v-text-input>
+				<v-text-input
+					v-model="form.password2"
+					label="Password again"
+					type="password"
+				></v-text-input>
 				<div class="errorMessage">
 					{{ errors.confirm }}
 				</div>
-				<div class="group">
-					<ui-checkbox
-						v-model="form.confirm"
-						name="confirm"
-						validationRules="required"
-					>I have read and understood the server rules.</ui-checkbox>
-				</div>
-				<ui-button
-					color="primary"
-					type="flat"
-					:loading="loading"
-				>Register</ui-button>
-			</form>
-		</div>
-		<div class="card" v-if="registered">
+				<v-checkbox
+					id="alibaba"
+					v-model="form.confirm"
+					label="I have read and understood the server rules."
+				></v-checkbox>
+				<v-btn
+					outline
+					class="primary primary--text"
+					@click.native="submit"
+				>Register</v-btn>
+			</v-card-text>
+		</v-card>
+		<v-card v-if="registered">
 			<h1>Registration success</h1>
 			<router-link to="/login">
 				<ui-button
@@ -83,8 +58,8 @@
 					color="primary"
 				>Go to login</ui-button>
 			</router-link>
-		</div>
-	</div>
+		</v-card>
+	</article>
 </template>
 
 <script>
@@ -156,10 +131,11 @@ export default {
 				
 				if (response.status !== 200) {
 					this.errors.name = response.body.message
-					return
+					console.log(response)
+					//return
 				}
 				
-				this.registered = true
+				//this.registered = true
 				console.log('success', response)
 			})
 		}
@@ -168,9 +144,7 @@ export default {
 </script>
 
 <style scoped>
-.group {
-	height: 60px;
-} .errorMessage {
+.errorMessage {
 	color: #f44336;
 }
 </style>

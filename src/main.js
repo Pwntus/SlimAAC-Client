@@ -1,14 +1,13 @@
 import Vue from 'vue'
-
+import Vuetify from 'vuetify'
 import router from './router'
 import store from './store'
-import Keen from 'keen-ui'
 import App from './components/App'
 
-import 'keen-ui/dist/keen-ui.css'
+import 'vuetify/dist/vuetify.min.css'
 import './assets/css/global.css'
 
-Vue.use(Keen)
+Vue.use(Vuetify)
 
 const app = new Vue({
 	router,

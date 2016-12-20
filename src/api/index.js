@@ -31,11 +31,6 @@ export default {
 			})
 	},
 	error (response) {
-		this.context.$emit('ui-snackbar::create', {
-			message: response.body.message,
-			action: '',
-			actionColor: 'accent',
-			duration: 5000
-		})
+		
 	}
 }

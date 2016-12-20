@@ -1,7 +1,8 @@
 <template>
 	<div class="topbar">
-		<ui-icon class="icon" icon="search"></ui-icon>
+		<router-link to="/" class="logo">SlimOT</router-link>
 		<span class="wrapper">
+			<v-icon>search</v-icon>
 			<input type="text" placeholder="Search">
 		</span>
 	</div>
@@ -16,13 +17,26 @@ export default {
 <style scoped>
 .topbar {
 	height: 60px;
-	background: #2a8fbd;
+	background: #0277bd;
 	color: #FFF;
 	box-shadow: 0 0 5px rgba(0, 0, 0, .5);
-} .icon {
-	margin-left: 30px;
+	top: 0;
+	left: 0;
+	right: 0;
+	position: fixed;
+	z-index: 100;
+} .logo {
+	width: 250px;
+	height: 60px;
+	color: #FFF;
+	text-align: center;
 	line-height: 60px;
+	font-size: 20px;
 	float: left;
+	display: block;
+} .icon {
+	margin-left: 20px;
+	line-height: 60px;
 	position: absolute;
 } .wrapper {
 	display: block;

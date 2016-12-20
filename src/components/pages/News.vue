@@ -1,13 +1,24 @@
 <template>
-	<div class="content">
+	<article>
 		<div v-if="posts">
-			<div class="card" v-for="post in posts">
-				<h1>{{ post.title }}</h1>
-				<h2>{{ post.date }}</h2>
-				<article>{{ post.content }}</article>
-			</div>
+			<v-card v-for="post in posts">
+				<v-card-row img="http://www.titanui.com/wp-content/uploads/2013/04/03/Vector-Cartoon-Nature-Background-03.jpg" height="300px"></v-card-row>
+				<v-card-row class="grey darken-3 white--text">
+					<v-card-title>
+						{{ post.title }}
+					</v-card-title>
+				</v-card-row>
+				<v-card-text>
+					{{ post.content }}
+				</v-card-text>
+				<v-card-row class="grey lighten-4" actions>
+					{{ post.date }}
+					<div class="spacer"></div>
+					<v-icon class="grey--text">access_time</v-icon>
+				</v-card-row>
+			</v-card>
 		</div>
-	</div>
+	</article>
 </template>
 
 <script>
@@ -43,9 +54,12 @@ export default {
 </script>
 
 <style scoped>
-.card h2 {
+/*.card h2 {
 	margin-bottom: 10px;
 	font-size: 14px;
 	color: #2a8fbd;
+}*/
+.card {
+	margin-bottom: 25px;
 }
 </style>

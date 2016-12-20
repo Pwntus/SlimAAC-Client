@@ -1,38 +1,32 @@
 <template>
-	<div class="content">
-		<div class="card">
-			<h1>Login</h1>
-			
-			<form @submit.prevent="submit">
+	<article>
+		<v-card>
+			<v-card-row class="light-blue darken-2 white--text">
+				<v-card-title>
+					Login
+				</v-card-title>
+			</v-card-row>
+			<v-card-text>
+				<v-text-input
+					v-model="form.name"
+					label="Account name"
+				></v-text-input>
+				<v-text-input
+					v-model="form.password"
+					label="Password"
+					type="password"
+				></v-text-input>
+				<v-btn
+					outline
+					class="primary primary--text"
+					@click.native="submit"
+				>Login</v-btn>
 				<div class="errorMessage">
 					{{ error }}
 				</div>
-				<div class="group">
-					<ui-textbox
-						v-model="form.name"
-						type="text"
-						name="name"
-						placeholder="Account name"
-						icon="account_circle"
-					></ui-textbox>
-				</div>
-				<div class="group">
-					<ui-textbox
-						v-model="form.password"
-						type="password"
-						name="password"
-						placeholder="Password"
-						icon="vpn_key"
-					></ui-textbox>
-				</div>
-				<ui-button
-					color="primary"
-					type="flat"
-					:loading="loading"
-				>Login</ui-button>
-			</form>
-		</div>
-	</div>
+			</v-card-text>
+		</v-card>
+	</article>
 </template>
 
 <script>
@@ -87,9 +81,7 @@ export default {
 </script>
 
 <style scoped>
-.group {
-	height: 60px;
-} .errorMessage {
+.errorMessage {
 	color: #f44336;
 }
 </style>
