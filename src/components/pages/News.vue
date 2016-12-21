@@ -54,11 +54,6 @@ export default {
 </script>
 
 <style scoped>
-/*.card h2 {
-	margin-bottom: 10px;
-	font-size: 14px;
-	color: #2a8fbd;
-}*/
 .card {
 	margin-bottom: 25px;
 }

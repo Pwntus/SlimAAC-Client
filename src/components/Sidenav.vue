@@ -6,7 +6,7 @@
 				<li class="header"><p>{{link.name}}</p><li>
 			</template>
 			<template v-else>
-				<li v-tooltip:right="link.name"><router-link :to="link.path"><v-icon>{{link.icon}}</v-icon>{{link.name}}</router-link></li>
+				<li v-tooltip:right="{html:link.name}"><router-link :to="link.path"><v-icon>{{link.icon}}</v-icon>{{link.name}}</router-link></li>
 			</template>
 		</template>
 		</ul>
@@ -36,7 +36,7 @@ export default {
 				{ path: '/wars', 				name: 'Wars', 			icon: 'whatshot', 			authLevel: 0 	},
 				
 				{ header: true, name: 'Market' },
-				{ path: '/shop', 				name: 'Shop List', 		icon: 'card_giftcard', 		authLevel: 0 	},
+				{ path: '/shop', 				name: 'Shop', 			icon: 'card_giftcard', 		authLevel: 0 	},
 				{ path: '/auctions', 			name: 'House Auctions', icon: 'account_balance', 	authLevel: 0 	},
 			]
 		}	

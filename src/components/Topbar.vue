@@ -26,16 +26,9 @@ export default {
 	position: fixed;
 	z-index: 100;
 } .logo {
-	width: 250px;
-	height: 60px;
-	color: #FFF;
-	text-align: center;
-	line-height: 60px;
-	font-size: 20px;
-	float: left;
-	display: block;
+	display: none;
 } .icon {
-	margin-left: 20px;
+	margin-left: 15px;
 	line-height: 60px;
 	position: absolute;
 } .wrapper {
@@ -52,5 +45,20 @@ export default {
 	display: inline-block;
 } ::-webkit-input-placeholder {
 	color: rgba(255, 255, 255, .5);
+}
+
+@media only screen and (min-width: 768px) {
+	.logo {
+		width: 250px;
+		height: 60px;
+		color: #FFF;
+		text-align: center;
+		line-height: 60px;
+		font-size: 20px;
+		float: left;
+		display: block;
+	} .icon {
+		margin-left: 20px;
+	}
 }
 </style>
