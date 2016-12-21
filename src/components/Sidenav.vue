@@ -1,36 +1,65 @@
 <template>
 	<div class="sidenav">
 		<ul>
-			<li><router-link to="/news"><v-icon>format_align_left</v-icon>News</router-link></li>
-			<li v-if="authLevel == 0"><router-link to="/account/register"><v-icon>person_add</v-icon>Create Account</router-link></li>
-			<li><router-link to="/downloads"><v-icon>play_for_work</v-icon>Downloads</router-link></li>
-			
-			<li v-if="authLevel == 0"><router-link to="/account/login"><v-icon>exit_to_app</v-icon>Login</router-link></li>
-			<li v-if="authLevel > 0"><router-link to="/account/logout"><v-icon>exit_to_app</v-icon>Logout</router-link></li>
-					
-			<li class="header"><p>Community</p></li>
-			<li><a href="#"><v-icon>timeline</v-icon>Online List</a></li>
-			<li><a href="#"><v-icon>public</v-icon>Activity</a></li>
-			<li><a href="#"><v-icon>star</v-icon>Highscores</a></li>
-			
-			<li class="header"><p>Guilds</p></li>
-			<li><a href="#"><v-icon>security</v-icon>Guild List</a></li>
-			<li><a href="#"><v-icon>whatshot</v-icon>Wars</a></li>
-			
-			<li class="header"><p>Market</p></li>
-			<li><a href="#"><v-icon>card_giftcard</v-icon>Shop</a></li>
-			<li><a href="#"><v-icon>account_balance</v-icon>House Auctions</a></li>
+		<template v-for="link in this.stateLinks">
+			<template v-if="link.header">
+				<li class="header"><p>{{link.name}}</p><li>
+			</template>
+			<template v-else>
+				<li v-tooltip:right="link.name"><router-link :to="link.path"><v-icon>{{link.icon}}</v-icon>{{link.name}}</router-link></li>
+			</template>
+		</template>
 		</ul>
 	</div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-
 export default {
-	computed: mapGetters([
-		'authLevel'
-	])
+	data () {
+		return {
+			links: [
+				{ path: '/news', 				name: 'News', 			icon: 'format_align_left', 	authLevel: 0 	},
+				{ path: '/account/register', 	name: 'Create Account', icon: 'person_add', 		authLevel: -1 	},
+				{ path: '/downloads', 			name: 'Downloads', 		icon: 'play_for_work', 		authLevel: 0 	},
+				
+				{ path: '/account/login', 		name: 'Login', 			icon: 'exit_to_app', 		authLevel: -1 	},
+				{ path: '/account/logout', 		name: 'Logout', 		icon: 'exit_to_app', 		authLevel: 1 	},
+				
+				
+				{ header: true, name: 'Community' },
+				{ path: '/online', 				name: 'Online List', 	icon: 'timeline', 			authLevel: 0 	},
+				{ path: '/activity', 			name: 'Activity', 		icon: 'public', 			authLevel: 0 	},
+				{ path: '/highscores', 			name: 'Highscores', 	icon: 'star', 				authLevel: 0 	},
+				
+				{ header: true, name: 'Guilds' },
+				{ path: '/guilds', 				name: 'Guild List', 	icon: 'security', 			authLevel: 0 	},
+				{ path: '/wars', 				name: 'Wars', 			icon: 'whatshot', 			authLevel: 0 	},
+				
+				{ header: true, name: 'Market' },
+				{ path: '/shop', 				name: 'Shop List', 		icon: 'card_giftcard', 		authLevel: 0 	},
+				{ path: '/auctions', 			name: 'House Auctions', icon: 'account_balance', 	authLevel: 0 	},
+			]
+		}	
+	},
+	computed: {
+		authLevel () {
+			return this.$store.getters.authLevel
+		},
+		stateLinks () {
+			const links = []
+			
+			this.links.forEach(link => {
+				if (link.authLevel < 0 && this.authLevel > 0) return
+				if (link.header
+					|| link.authLevel == 0
+					|| this.authLevel >= link.authLevel) {
+					links.push(link)
+				}
+			})
+			
+			return links
+		}
+	}
 }
 </script>
 
@@ -45,6 +74,7 @@ export default {
 	bottom: 0;
 	left: 0;
 	transition: all .3s cubic-bezier(0,0,.2,1);
+	z-index: 99;
 } ul {
 	padding-top: 20px;
 	list-style-type: none;
@@ -91,6 +121,8 @@ export default {
 		display: block;
 	} li a {
 		font-size: 15px;
+	} .tooltip:after {
+		visibility: hidden !important;
 	}
 }
 </style>
