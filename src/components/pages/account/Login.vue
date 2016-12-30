@@ -1,32 +1,36 @@
 <template>
-	<article>
-		<v-card>
-			<v-card-row class="light-blue darken-2 white--text">
-				<v-card-title>
-					Login
-				</v-card-title>
-			</v-card-row>
-			<v-card-text>
-				<v-text-input
-					v-model="form.name"
-					label="Account name"
-				></v-text-input>
-				<v-text-input
-					v-model="form.password"
-					label="Password"
-					type="password"
-				></v-text-input>
-				<v-btn
-					outline
-					class="primary primary--text"
-					@click.native="submit"
-				>Login</v-btn>
-				<div class="errorMessage">
+	<v-container fluid content>
+		<v-row>
+			<v-col xs12 lg6>
+				<v-alert error hide-icon v-model="alert">
 					{{ error }}
-				</div>
-			</v-card-text>
-		</v-card>
-	</article>
+				</v-alert>
+				<v-card class="light-blue darken-2">
+					<v-card-row class="white--text">
+						<v-card-title>
+							Login
+						</v-card-title>
+					</v-card-row>
+					<v-card-text class="white">
+						<v-text-input
+							v-model="form.name"
+							label="Account name"
+						></v-text-input>
+						<v-text-input
+							v-model="form.password"
+							label="Password"
+							type="password"
+						></v-text-input>
+						<v-btn
+							outline
+							class="primary primary--text"
+							@click.native="submit"
+						>Login</v-btn>
+					</v-card-text>
+				</v-card>
+			</v-col>
+		</v-row>
+	</v-container>
 </template>
 
 <script>
@@ -39,6 +43,7 @@ export default {
 				name: '',
 				password: ''
 			},
+			alert: false,
 			error: '',
 			loading: false
 		}
@@ -52,6 +57,9 @@ export default {
 		}
 	},
 	watch: {
+		error: function (value) {
+			this.alert = value !== ''
+		},
 		loading: function (value) {
 			this.$store.dispatch('setPageLoading', value)
 		}
@@ -60,8 +68,10 @@ export default {
 		submit () {
 			this.error = ''
 			
-			if (this.form.name == '' || this.form.password == '')
+			if (this.form.name == '' || this.form.password == '') {
+				this.error = 'Who are you?'
 				return
+			}
 			
 			this.loading = true
 			Api.action(this, 'post', 'oauth', this.payload)
@@ -81,7 +91,7 @@ export default {
 </script>
 
 <style scoped>
-.errorMessage {
-	color: #f44336;
+.alert {
+	margin-bottom: 20px;
 }
 </style>

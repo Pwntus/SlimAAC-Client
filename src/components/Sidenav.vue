@@ -121,7 +121,7 @@ export default {
 		display: block;
 	} li a {
 		font-size: 15px;
-	} .tooltip:after {
+	} [data-tooltip]:after {
 		visibility: hidden !important;
 	}
 }

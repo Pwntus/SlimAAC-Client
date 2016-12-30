@@ -31,6 +31,10 @@ export default {
 			})
 	},
 	error (response) {
-		
+		this.context.$vuetify.toast.create(
+			response.body.message,
+			'snack',
+			10000
+		)
 	}
 }

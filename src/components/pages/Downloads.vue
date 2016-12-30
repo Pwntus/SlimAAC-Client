@@ -1,14 +1,11 @@
 <template>
-	<article>
-		<v-collapsible>
-		  <v-collapsible-header>Item</v-collapsible-header>
-		  <v-collapsible-body>
-		    <v-card>
-		      <v-card-text class="grey lighten-3">...</v-card-text>
-		    </v-card>
-		  </v-collapsible-body>
-		</v-collapsible>
-	</article>
+	<v-container fluid content>
+		<v-row>
+			<v-col xs12 lg6>
+				
+			</v-col>
+		</v-row>
+	</v-container>
 </template>
 
 <script>
