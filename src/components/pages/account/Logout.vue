@@ -2,8 +2,8 @@
 <script>
 export default {
 	created () {
-		this.$store.dispatch('removeAuthUser')
-		this.$router.replace({path: '/'})
+		this.$store.dispatch('removeUser')
+		this.$router.go(-1)
 	}
 }
 </script>

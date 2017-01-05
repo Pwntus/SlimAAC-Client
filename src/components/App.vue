@@ -19,21 +19,18 @@ export default {
 	},
 	computed: mapGetters([
 		'authLevel',
-		'isPageLoading'
+		'pageLoading'
 	]),
 	beforeRouteEnter (to, from, next) {
-		if (this.authLevel < to.meta.authLevel
-			|| (this.authLevel > 0 && to.meta.authLevel < 0))
-			next({path: '/'})
-		console.log(this.authLevel)
-		// Need fixin
+		console.log('ok')
 		next()
 	},
 	mounted () {
 		this.$vuetify.init()
-		const authUser = JSON.parse(window.localStorage.getItem('authUser'))
-		if (authUser !== null)
-			this.$store.dispatch('setAuthUser', authUser)
+		
+		let user = JSON.parse(window.localStorage.getItem('user'))
+		if (user !== null)
+			this.$store.dispatch('setUser', user)
 	}
 }
 </script>

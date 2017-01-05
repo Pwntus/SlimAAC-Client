@@ -3,8 +3,8 @@
 		<v-row v-if="posts">
 			<v-col xs12 lg6>
 				<v-card v-for="post in posts">
-					<v-card-row img="http://www.titanui.com/wp-content/uploads/2013/04/03/Vector-Cartoon-Nature-Background-03.jpg" height="300px"></v-card-row>
-					<v-card-row class="grey darken-3 white--text">
+					<v-parallax src="http://static.tibia.com/images/abouttibia/tibia_screenshot_39.png" height="250"></v-parallax>
+					<v-card-row class="light-blue darken-3 white--text">
 						<v-card-title>
 							{{ post.title }}
 						</v-card-title>
