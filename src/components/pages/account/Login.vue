@@ -1,8 +1,8 @@
 <template>
 	<v-container fluid content>
 		<v-row>
-			<v-col xs12 lg6>
-				<v-alert error hide-icon>
+			<v-col xs12 lg8 offset-lg2>
+				<v-alert v-if="error" error hide-icon>
 					{{ error }}
 				</v-alert>
 				<v-card class="light-blue darken-2">

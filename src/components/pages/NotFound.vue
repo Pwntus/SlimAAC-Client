@@ -1,7 +1,11 @@
 <template>
-	<div class="content">
-		<h1><ui-icon class="icon" icon="texture"></ui-icon>Not Found</h1>
-	</div>
+	<v-container fluid content>
+		<v-row>
+			<v-col xs12 lg8 offset-lg2>
+				<v-icon>texture</v-icon>
+			</v-col>
+		</v-row>
+	<v-container>
 </template>
 
 <script>
@@ -12,13 +16,13 @@ export default {
 
 <style scoped>
 h1 {
-	padding-top: 50px;
-	text-align: center;
+	font-size: 50px;
+} .icon {
+	padding-top: 60px;
+	font-size: 12em;
 	color: #f8f8f8;
 	text-shadow: 0 -1px 0 #000;
-} .ui-icon {
-	margin-right: 10px;
-	font-size: 50px;
-	line-height: 42px;
+	text-align: center;
+	display: block;
 }
 </style>

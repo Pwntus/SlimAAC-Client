@@ -21,10 +21,6 @@ export default {
 		'authLevel',
 		'pageLoading'
 	]),
-	beforeRouteEnter (to, from, next) {
-		console.log('ok')
-		next()
-	},
 	mounted () {
 		this.$vuetify.init()
 		

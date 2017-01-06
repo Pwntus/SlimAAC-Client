@@ -1,7 +1,7 @@
 <template>
 	<v-container fluid content>
 		<v-row>
-			<v-col xs12 lg6>
+			<v-col xs12 lg8 offset-lg2>
 				<v-alert error hide-icon v-model="alert">
 					{{ error }}
 				</v-alert>

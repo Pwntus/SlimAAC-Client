@@ -19,8 +19,9 @@ export default {
 		return {
 			links: [
 				{ path: '/news', 				name: 'News', 			icon: 'format_align_left', 	authLevel: 0 	},
+				{ path: '/account', 			name: 'Account', 		icon: 'settings', 			authLevel: 1 	},
+				{ path: '/account/chars', 		name: 'Characters', 	icon: 'videogame_asset',	authLevel: 1 	},
 				{ path: '/account/register', 	name: 'Create Account', icon: 'person_add', 		authLevel: -1 	},
-				{ path: '/downloads', 			name: 'Downloads', 		icon: 'play_for_work', 		authLevel: 0 	},
 				
 				{ path: '/account/login', 		name: 'Login', 			icon: 'exit_to_app', 		authLevel: -1 	},
 				{ path: '/account/logout', 		name: 'Logout', 		icon: 'exit_to_app', 		authLevel: 1 	},
@@ -30,6 +31,7 @@ export default {
 				{ path: '/online', 				name: 'Online List', 	icon: 'timeline', 			authLevel: 0 	},
 				{ path: '/activity', 			name: 'Activity', 		icon: 'public', 			authLevel: 0 	},
 				{ path: '/highscores', 			name: 'Highscores', 	icon: 'star', 				authLevel: 0 	},
+				{ path: '/downloads', 			name: 'Downloads', 		icon: 'play_for_work', 		authLevel: 0 	},
 				
 				{ header: true, name: 'Guilds' },
 				{ path: '/guilds', 				name: 'Guild List', 	icon: 'security', 			authLevel: 0 	},

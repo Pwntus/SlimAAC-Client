@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import * as type from '../mutation-types'
-import authService from '../../services/auth'
+import {authService} from '../../services'
 
 const state = {
 	user: null
@@ -21,6 +21,8 @@ const mutations = {
 
 const actions = {
 	auth ({commit}, payload) {
+		commit(type.REMOVE_HTTP_ERROR)
+		
 		authService.requestToken(payload)
 			.then((response) => commit(type.SET_USER, response))
 			.catch((error) => commit(type.HTTP_ERROR, error))

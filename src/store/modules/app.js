@@ -21,9 +21,9 @@ const actions = {
 	setPageLoading ({commit}, value) {
 		commit(type.SET_PAGE_LOADING, value)
 	},
-	removeHttpError ({commit}) {
+	/*removeHttpError ({commit}) {
 		commit(type.REMOVE_HTTP_ERROR)
-	}
+	}*/
 }
 
 const getters = {

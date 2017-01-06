@@ -1,16 +1,22 @@
 <template>
 	<div class="topbar">
-		<router-link to="/" class="logo">SlimOT</router-link>
-		<span class="wrapper">
-			<v-icon>search</v-icon>
-			<input type="text" placeholder="Search">
-		</span>
+		<router-link to="/" class="logo">
+			<img src="../assets/img/g49.png">
+		</router-link>
 	</div>
 </template>
 
 <script>
 export default {
-	
+	data () {
+		return {
+			items: [
+				{ text: 'My Characters', href: '#!' },
+				{ text: 'Settings', href: '#!' },
+				{ text: 'Logout', href: '#!' },
+			]
+		}
+	}
 }
 </script>
 
@@ -26,38 +32,19 @@ export default {
 	position: fixed;
 	z-index: 100;
 } .logo {
-	display: none;
-} .icon {
-	margin-left: 15px;
+	width: 60px;
+	height: 60px;
 	line-height: 60px;
-	position: absolute;
-} .wrapper {
+	text-align: center;
+	font-size: 20px;
 	display: block;
-	overflow: hidden;
-} .wrapper input {
-	width: 100%;
-	padding: 0 10px 0 60px;
-	background: transparent;
-	border: 0;
-	line-height: 60px;
-	color: #FFF;
-	font-size: 18px;
-	display: inline-block;
-} ::-webkit-input-placeholder {
-	color: rgba(255, 255, 255, .5);
+	margin: 0 auto;
+} .logo img {
+	width: 60px;
 }
 
 @media only screen and (min-width: 768px) {
-	.logo {
-		width: 250px;
-		height: 60px;
-		color: #FFF;
-		text-align: center;
-		line-height: 60px;
-		font-size: 20px;
-		float: left;
-		display: block;
-	} .icon {
+	.icon {
 		margin-left: 20px;
 	}
 }
